@@ -1,5 +1,10 @@
 # Compiled class file
 *.class
+.gradle/**
+build/**
+
+# Editor settings
+.idea/**
 
 # Log file
 *.log
