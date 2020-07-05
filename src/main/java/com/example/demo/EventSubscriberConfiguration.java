@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class EventSubscriberConfiguration implements ApplicationListener<ApplicationReadyEvent> {
 
-    private Logger logger = LoggerFactory.getLogger(EventSubscriberConfiguration.class);
+    private final Logger logger = LoggerFactory.getLogger(EventSubscriberConfiguration.class);
 
     @Value("${subscriber.queue}")
     private String queueName;

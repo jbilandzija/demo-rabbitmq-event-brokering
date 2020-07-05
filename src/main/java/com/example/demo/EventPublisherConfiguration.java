@@ -17,7 +17,6 @@ public class EventPublisherConfiguration {
         return new TopicExchange("eventExchange");
     }
 
-
     @Bean
     public EventPublisher eventPublisher(RabbitTemplate rabbitTemplate, TopicExchange senderTopicExchange) {
         return new EventPublisher(rabbitTemplate, senderTopicExchange);

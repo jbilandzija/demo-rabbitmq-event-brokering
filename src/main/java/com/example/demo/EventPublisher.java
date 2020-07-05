@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class EventPublisher {
 
-    private static List<String> ROUTING_KEYS = Arrays.asList(
+    private static final List<String> ROUTING_KEYS = Arrays.asList(
             "customer.created",
             "customer.edited",
             "customer.deleted",
@@ -23,12 +23,13 @@ public class EventPublisher {
             "invoice.created",
             "invoice.edited",
             "invoice.deleted");
-    private final RabbitTemplate rabbitTemplate;
 
+    private final RabbitTemplate rabbitTemplate;
     private final TopicExchange topicExchange;
-    private Logger logger = LoggerFactory.getLogger(EventPublisher.class);
+    private final Logger logger = LoggerFactory.getLogger(EventPublisher.class);
+    private final Random random = new Random();
+
     private int messageNumber = 0;
-    private Random random = new Random();
 
     @Autowired
     public EventPublisher(RabbitTemplate rabbitTemplate, TopicExchange topicExchange) {
@@ -47,5 +48,4 @@ public class EventPublisher {
     private String randomRoutingKey() {
         return ROUTING_KEYS.get(random.nextInt(ROUTING_KEYS.size()));
     }
-
 }
